@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <title>Student Projects Hub</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>My Student Projects</h1>
-        <p>Electronics aur Engineering Projects ki Gallery</p>
-    </header>
-
-    <section id="projects">
-        <div class="project-card">
-            <h3>Automatic A4 Printing Machine</h3>
-            <p>Components: Arduino, Stepper Motor, etc.</p>
-            <button>Details Dekhein</button>
-        </div>
-        </section>
-</body>
-</html>
+ body { font-family: Arial; text-align: center; background: #f4f4f4; }
+header { background: #333; color: white; padding: 20px; }
+.project-card { 
+    background: white; margin: 20px; padding: 15px; 
+    border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
