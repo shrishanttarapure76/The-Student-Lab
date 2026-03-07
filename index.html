@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team4Print | Student Project Hub</title>
+    <title>Student Innovation Lab | Projects</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* CSS CODE STARTING HERE */
         :root {
-            --primary: #00d2ff;
-            --secondary: #3a7bd5;
-            --dark: #0f172a;
-            --glass: rgba(255, 255, 255, 0.05);
+            --primary: #00fbff;
+            --secondary: #0072ff;
+            --dark: #050a18;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
@@ -24,104 +23,99 @@
             color: #e2e8f0;
             font-family: 'Space Grotesk', sans-serif;
             margin: 0;
-            overflow-x: hidden;
         }
 
-        /* Header & Hero */
         header {
-            height: 50vh;
+            height: 40vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(5,10,24,0.8), var(--dark)), 
+                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
-            background-position: center;
             text-align: center;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 1px solid rgba(0,251,255,0.2);
         }
 
-        .logo-text { font-size: clamp(2rem, 8vw, 4rem); margin: 0; letter-spacing: -2px; }
-        .logo-text span { color: var(--primary); text-shadow: 0 0 20px var(--primary); }
+        .logo-text { font-size: 3rem; margin: 0; font-weight: 700; color: white; }
+        .logo-text span { color: var(--primary); }
 
-        /* Navigation */
         nav {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(5, 10, 24, 0.9);
+            backdrop-filter: blur(15px);
             padding: 15px 0;
-            border-bottom: 1px solid var(--glass);
         }
 
-        .nav-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-container { display: flex; justify-content: center; gap: 12px; }
 
         .filter-btn {
             background: var(--glass);
             border: 1px solid rgba(255,255,255,0.1);
-            color: white; padding: 8px 20px;
-            border-radius: 50px; cursor: pointer;
+            color: #94a3b8; padding: 10px 22px;
+            border-radius: 8px; cursor: pointer; font-size: 14px;
         }
 
         .filter-btn:hover, .filter-btn.active {
             background: var(--primary);
             color: var(--dark);
-            box-shadow: 0 0 15px var(--primary);
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,251,255,0.4);
         }
 
-        /* Project Cards Grid */
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
             background: var(--glass);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); opacity: 0;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.07);
+            transform: scale(1.02);
         }
+
+        .project-card:hover::before { opacity: 1; }
 
         .badge {
-            position: absolute; top: 15px; right: 15px;
-            background: var(--primary); color: var(--dark);
-            padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: bold;
+            background: rgba(0,251,255,0.1); color: var(--primary);
+            padding: 4px 12px; border-radius: 5px; font-size: 11px; font-weight: bold;
         }
 
-        .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        h3 { margin: 10px 0; color: white; }
-        p { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+        h3 { font-size: 1.5rem; margin: 20px 0 10px 0; color: #fff; }
+        p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
 
         .card-footer {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: 25px; display: flex; justify-content: space-between; align-items: center;
         }
 
-        .main-btn {
-            text-decoration: none; color: var(--dark);
-            background: var(--primary);
-            padding: 8px 18px; border-radius: 8px; font-weight: bold; font-size: 14px;
+        .view-btn {
+            text-decoration: none; color: var(--dark); background: var(--primary);
+            padding: 10px 20px; border-radius: 6px; font-weight: bold; font-size: 14px;
         }
 
-        footer { text-align: center; padding: 40px; opacity: 0.6; font-size: 13px; }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; }
     </style>
 </head>
 <body>
 
     <header>
         <div>
-            <h1 class="logo-text">Team<span>4</span>Print</h1>
-            <p style="color: var(--primary); letter-spacing: 2px;">INNOVATION HUB</p>
+            <h1 class="logo-text">Student<span>Lab</span></h1>
+            <p style="color: #94a3b8;">Engineering Projects & Innovation Gallery</p>
         </div>
     </header>
 
@@ -129,8 +123,7 @@
         <div class="nav-container">
             <button class="filter-btn active">All Projects</button>
             <button class="filter-btn">Electronics</button>
-            <button class="filter-btn">Printing</button>
-            <button class="filter-btn">Automation</button>
+            <button class="filter-btn">Design</button>
         </div>
     </nav>
 
@@ -139,34 +132,21 @@
             
             <div class="project-card">
                 <span class="badge">ELECTRONICS</span>
-                <i class="fas fa-microchip card-icon"></i>
-                <h3>Smart Voting Machine</h3>
-                <p>Arduino based secure voting system with digital counting and LCD interface.</p>
+                <h3>Project Title One</h3>
+                <p>Yahan apne project ka description likhein. Jaise components, working aur result.</p>
                 <div class="card-footer">
-                    <a href="#" class="main-btn">View Details</a>
-                    <i class="fas fa-download" style="cursor:pointer"></i>
+                    <a href="#" class="view-btn">Full Details</a>
+                    <i class="fas fa-file-code" style="color: #475569;"></i>
                 </div>
             </div>
 
             <div class="project-card">
-                <span class="badge">PRINTING</span>
-                <i class="fas fa-print card-icon"></i>
-                <h3>ATM Style Printer</h3>
-                <p>A custom printing machine designed for student projects and document handling.</p>
+                <span class="badge">MECHANICAL</span>
+                <h3>Project Title Two</h3>
+                <p>Aap is card ko copy karke jitne chahe utne naye projects add kar sakte hain.</p>
                 <div class="card-footer">
-                    <a href="#" class="main-btn">Get Code</a>
-                    <i class="fas fa-file-pdf" style="cursor:pointer"></i>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="badge">AUTOMATION</span>
-                <i class="fas fa-robot card-icon"></i>
-                <h3>Automatic A4 Machine</h3>
-                <p>Mechanical automation for high-speed A4 paper processing and sorting.</p>
-                <div class="card-footer">
-                    <a href="#" class="main-btn">Read Report</a>
-                    <i class="fas fa-link" style="cursor:pointer"></i>
+                    <a href="#" class="view-btn">View Code</a>
+                    <i class="fas fa-file-pdf" style="color: #475569;"></i>
                 </div>
             </div>
 
@@ -174,7 +154,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Team4Print | Created by Shrishant Tarapure</p>
+        <p>Portfolio Project | &copy; 2026</p>
     </footer>
 
 </body>
