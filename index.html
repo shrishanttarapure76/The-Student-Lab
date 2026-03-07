@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Innovation Lab | All Branches</title>
+    <title>Student Project Lab</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,197 +12,180 @@
         :root {
             --primary: #00fbff;
             --dark: #050a18;
-            --glass: rgba(255, 255, 255, 0.03);
+            --glass: rgba(255, 255, 255, 0.05);
         }
-
-        * { box-sizing: border-box; transition: all 0.3s ease; }
 
         body {
             background-color: var(--dark);
             color: #e2e8f0;
             font-family: 'Space Grotesk', sans-serif;
             margin: 0;
+            text-align: center;
         }
 
         header {
-            height: 35vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(5,10,24,0.85), var(--dark)), 
-                        url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            text-align: center;
-            border-bottom: 1px solid rgba(0,251,255,0.2);
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #0a1428, var(--dark));
         }
 
-        .logo-text { font-size: clamp(1.5rem, 5vw, 3rem); margin: 0; font-weight: 700; color: white; }
+        .logo-text { font-size: 3rem; margin: 0; font-weight: 700; color: white; }
         .logo-text span { color: var(--primary); }
 
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(5, 10, 24, 0.9);
-            backdrop-filter: blur(15px);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .nav-container { 
-            display: flex; 
-            justify-content: center; 
-            gap: 8px; 
-            flex-wrap: wrap; 
-            max-width: 1200px; 
+        /* Branch Selection Area */
+        .branch-section {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 10px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
         }
 
-        .filter-btn {
+        .branch-btn {
             background: var(--glass);
             border: 1px solid rgba(255,255,255,0.1);
-            color: #94a3b8; padding: 8px 16px;
-            border-radius: 6px; cursor: pointer; font-size: 13px;
+            color: white;
+            padding: 25px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .branch-btn:hover, .branch-btn.active {
             background: var(--primary);
             color: var(--dark);
-            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,251,255,0.3);
+            transform: translateY(-5px);
         }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        
+        /* Project Display Area (Hidden by default) */
+        .project-display {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            display: none; /* Hide until clicked */
+        }
+
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        /* Card Styling */
         .project-card {
-            background: var(--glass);
-            border-radius: 12px;
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 25px;
-            display: block; /* Initially show all */
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
         }
 
-        .project-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(0,251,255,0.1); color: var(--primary);
-            padding: 3px 10px; border-radius: 4px; font-size: 10px; font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        h3 { font-size: 1.3rem; margin: 0 0 10px 0; color: #fff; }
-        p { color: #94a3b8; font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
-
+        .project-card h3 { color: var(--primary); margin-top: 0; }
+        
         .view-btn {
-            text-decoration: none; color: var(--dark); background: var(--primary);
-            padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 13px;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
         }
 
-        footer { text-align: center; padding: 50px; color: #475569; font-size: 12px; }
+        h2#selectedBranchName {
+            color: white;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div>
-            <h1 class="logo-text">Student<span>Lab</span></h1>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Multi-Disciplinary Engineering Projects</p>
-        </div>
+        <h1 class="logo-text">Student<span>Lab</span></h1>
+        <p>Select your branch to view projects</p>
     </header>
 
-    <nav>
-        <div class="nav-container">
-            <button class="filter-btn active" onclick="filterSelection('all')">All</button>
-            <button class="filter-btn" onclick="filterSelection('entc')">Electronics</button>
-            <button class="filter-btn" onclick="filterSelection('electrical')">Electrical</button>
-            <button class="filter-btn" onclick="filterSelection('mech')">Mechanical</button>
-            <button class="filter-btn" onclick="filterSelection('civil')">Civil</button>
-            <button class="filter-btn" onclick="filterSelection('comp')">Computer</button>
-            <button class="filter-btn" onclick="filterSelection('ai')">AI</button>
-        </div>
-    </nav>
+    <div class="branch-section">
+        <button class="branch-btn" onclick="showProjects('Electronics', 'entc')">Electronics</button>
+        <button class="branch-btn" onclick="showProjects('Electrical', 'electrical')">Electrical</button>
+        <button class="branch-btn" onclick="showProjects('Mechanical', 'mech')">Mechanical</button>
+        <button class="branch-btn" onclick="showProjects('Civil', 'civil')">Civil</button>
+        <button class="branch-btn" onclick="showProjects('Computer', 'comp')">Computer</button>
+        <button class="branch-btn" onclick="showProjects('A.I.', 'ai')">Artificial Intelligence</button>
+    </div>
 
-    <main class="container">
+    <div id="projectArea" class="project-display">
+        <h2 id="selectedBranchName"></h2>
         <div class="project-grid" id="projectGrid">
-            
-            <div class="project-card comp">
-                <span class="badge">Computer</span>
-                <h3>Library Management System</h3>
-                <p>Python aur MySQL ka use karke banaya gaya digital records system.</p>
-                <a href="#" class="view-btn">Full Details</a>
             </div>
-
-            <div class="project-card entc">
-                <span class="badge">Electronics</span>
-                <h3>Smart Voting Machine</h3>
-                <p>Arduino based digital voting system with secure counting.</p>
-                <a href="#" class="view-btn">Full Details</a>
-            </div>
-
-            <div class="project-card mech">
-                <span class="badge">Mechanical</span>
-                <h3>Hydraulic Arm</h3>
-                <p>Syringe pressure ka use karke heavy objects lift karne wali machine.</p>
-                <a href="#" class="view-btn">Full Details</a>
-            </div>
-
-            <div class="project-card ai">
-                <span class="badge">AI</span>
-                <h3>Face Recognition Attendance</h3>
-                <p>AI model jo students ke chehre pehchan kar attendance mark karta hai.</p>
-                <a href="#" class="view-btn">Full Details</a>
-            </div>
-
-            <div class="project-card civil">
-                <span class="badge">Civil</span>
-                <h3>Smart City Model</h3>
-                <p>Advanced urban planning aur waste management ka working model.</p>
-                <a href="#" class="view-btn">Full Details</a>
-            </div>
-
-            <div class="project-card electrical">
-                <span class="badge">Electrical</span>
-                <h3>Wireless Power Transfer</h3>
-                <p>Tesla Coil ka use karke bina wires ke bulb jalane ka project.</p>
-                <a href="#" class="view-btn">Full Details</a>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-        <p>Engineering Portfolio | &copy; 2026</p>
-    </footer>
+    </div>
 
     <script>
-        function filterSelection(c) {
-            var x, i;
-            x = document.getElementsByClassName("project-card");
-            if (c == "all") c = "";
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-                if (x[i].className.indexOf(c) > -1) {
-                    x[i].style.display = "block";
-                }
-            }
-            
-            // Active button color change
-            var btns = document.getElementsByClassName("filter-btn");
-            for (var j = 0; j < btns.length; j++) {
-                btns[j].classList.remove("active");
-            }
-            event.currentTarget.classList.add("active");
+        // Data for each branch
+        const projectsData = {
+            entc: [
+                { title: "Smart Voting Machine", desc: "Arduino based secure digital voting system." },
+                { title: "Home Automation", desc: "Control home lights via Bluetooth/Mobile app." }
+            ],
+            electrical: [
+                { title: "Wireless Power Transfer", desc: "Tesla Coil based power transmission without wires." },
+                { title: "Smart Energy Meter", desc: "Monitor electricity usage and send SMS alerts." }
+            ],
+            mech: [
+                { title: "Hydraulic Robot Arm", desc: "Machine for lifting heavy objects using hydraulics." },
+                { title: "Solar Grass Cutter", desc: "Fully automated lawn mower powered by solar." }
+            ],
+            civil: [
+                { title: "Earthquake Resistant Building", desc: "Model showing base isolation for seismic safety." },
+                { title: "Smart City Management", desc: "Urban planning with advanced waste management." }
+            ],
+            comp: [
+                { title: "Library Management", desc: "Software to manage book records using Python/MySQL." },
+                { title: "Password Manager", desc: "Secure tool for storing encrypted passwords." }
+            ],
+            ai: [
+                { title: "Face Recognition", desc: "Attendance system using AI and computer vision." },
+                { title: "Voice Assistant", desc: "Personal assistant like Alexa/Siri using Python." }
+            ]
+        };
+
+        function showProjects(branchName, branchKey) {
+            // 1. Show the display area
+            const area = document.getElementById('projectArea');
+            area.style.display = 'block';
+
+            // 2. Set Branch Title
+            document.getElementById('selectedBranchName').innerText = branchName + " Projects";
+
+            // 3. Generate Project Cards
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = ""; // Clear old projects
+
+            projectsData[branchKey].forEach(p => {
+                const card = `
+                    <div class="project-card">
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <a href="#" class="view-btn">View Full Report</a>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+
+            // 4. Highlight active button
+            const btns = document.querySelectorAll('.branch-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Scroll to projects
+            area.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 
