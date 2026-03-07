@@ -1,115 +1,85 @@
-:root {
-    --primary: #00d2ff;
-    --secondary: #3a7bd5;
-    --dark: #0f172a;
-    --glass: rgba(255, 255, 255, 0.05);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team4Print | Innovation Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-* { box-sizing: border-box; transition: all 0.3s ease; }
+    <header>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 class="logo-text">Team<span>4</span>Print</h1>
+            <p>Building the Future, One Project at a Time</p>
+            <div class="header-stats">
+                <span><i class="fas fa-microchip"></i> 10+ Projects</span>
+                <span><i class="fas fa-users"></i> Student Community</span>
+            </div>
+        </div>
+    </header>
 
-body {
-    background-color: var(--dark);
-    color: #e2e8f0;
-    font-family: 'Space Grotesk', sans-serif;
-    margin: 0;
-}
+    <nav>
+        <div class="nav-container">
+            <button onclick="filterSelection('all')" class="btn active">All Work</button>
+            <button onclick="filterSelection('electronics')" class="btn">Electronics</button>
+            <button onclick="filterSelection('printing')" class="btn">Printing</button>
+            <button onclick="filterSelection('software')" class="btn">Software</button>
+        </div>
+    </nav>
 
-/* Header & Hero */
-header {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    text-align: center;
-}
+    <section class="container">
+        <div class="project-grid">
+            
+            <div class="project-card electronics">
+                <div class="card-inner">
+                    <div class="badge">Electronics</div>
+                    <i class="fas fa-bolt-lightning card-icon"></i>
+                    <h3>Smart Voting Machine</h3>
+                    <p>Arduino-powered secure voting system with real-time LCD display.</p>
+                    <div class="card-footer">
+                        <a href="#" class="main-btn">View Code</a>
+                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
 
-.overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(15,23,42,0.7), var(--dark));
-}
+            <div class="project-card printing">
+                <div class="card-inner">
+                    <div class="badge">Printing</div>
+                    <i class="fas fa-print card-icon"></i>
+                    <h3>Automatic A4 Machine</h3>
+                    <p>Innovative mechanism for automated paper handling and layout.</p>
+                    <div class="card-footer">
+                        <a href="#" class="main-btn">Details</a>
+                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
 
-.hero-content { position: relative; z-index: 1; }
+            <div class="project-card electronics">
+                <div class="card-inner">
+                    <div class="badge">Automation</div>
+                    <i class="fas fa-robot card-icon"></i>
+                    <h3>ATM Style Printer</h3>
+                    <p>Token-based printing system for college campuses.</p>
+                    <div class="card-footer">
+                        <a href="#" class="main-btn">Full Report</a>
+                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
 
-.logo-text { font-size: 4rem; margin: 0; letter-spacing: -2px; }
-.logo-text span { color: var(--primary); text-shadow: 0 0 20px var(--primary); }
+        </div>
+    </section>
 
-/* Navigation */
-nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-}
+    <footer>
+        <p>Created by <strong>Shrishant Tarapure</strong> | Team4Print 2026</p>
+    </footer>
 
-.nav-container { display: flex; justify-content: center; gap: 15px; }
-
-.btn {
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white; padding: 10px 25px;
-    border-radius: 50px; cursor: pointer;
-    font-weight: 500;
-}
-
-.btn:hover, .btn.active {
-    background: var(--primary);
-    box-shadow: 0 0 15px var(--primary);
-}
-
-/* Project Cards */
-.container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    background: var(--glass);
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    overflow: hidden;
-    position: relative;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary);
-}
-
-.card-inner { padding: 30px; position: relative; }
-
-.badge {
-    position: absolute; top: 20px; right: 20px;
-    background: var(--primary); color: var(--dark);
-    padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;
-}
-
-.card-icon { font-size: 3rem; margin-bottom: 20px; color: var(--primary); }
-
-.card-footer {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 25px;
-}
-
-.main-btn {
-    text-decoration: none; color: white;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    padding: 10px 20px; border-radius: 10px; font-weight: bold;
-}
-
-.icon-btn { color: #94a3b8; font-size: 1.2rem; }
-.icon-btn:hover { color: var(--primary); }
-
-footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass); }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .logo-text { font-size: 2.5rem; }
-    .nav-container { overflow-x: auto; padding: 10px; }
-}
+    <script src="script.js"></script>
+</body>
+</html>
