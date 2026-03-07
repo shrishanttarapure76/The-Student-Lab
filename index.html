@@ -1,85 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team4Print | Innovation Hub</title>
+    <title>Team4Print | Student Project Hub</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* CSS CODE STARTING HERE */
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+
+        body {
+            background-color: var(--dark);
+            color: #e2e8f0;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header & Hero */
+        header {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.9)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo-text { font-size: clamp(2rem, 8vw, 4rem); margin: 0; letter-spacing: -2px; }
+        .logo-text span { color: var(--primary); text-shadow: 0 0 20px var(--primary); }
+
+        /* Navigation */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--glass);
+        }
+
+        .nav-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+        .filter-btn {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white; padding: 8px 20px;
+            border-radius: 50px; cursor: pointer;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Project Cards Grid */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .badge {
+            position: absolute; top: 15px; right: 15px;
+            background: var(--primary); color: var(--dark);
+            padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: bold;
+        }
+
+        .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        h3 { margin: 10px 0; color: white; }
+        p { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+
+        .card-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-btn {
+            text-decoration: none; color: var(--dark);
+            background: var(--primary);
+            padding: 8px 18px; border-radius: 8px; font-weight: bold; font-size: 14px;
+        }
+
+        footer { text-align: center; padding: 40px; opacity: 0.6; font-size: 13px; }
+    </style>
 </head>
 <body>
 
     <header>
-        <div class="overlay"></div>
-        <div class="hero-content">
+        <div>
             <h1 class="logo-text">Team<span>4</span>Print</h1>
-            <p>Building the Future, One Project at a Time</p>
-            <div class="header-stats">
-                <span><i class="fas fa-microchip"></i> 10+ Projects</span>
-                <span><i class="fas fa-users"></i> Student Community</span>
-            </div>
+            <p style="color: var(--primary); letter-spacing: 2px;">INNOVATION HUB</p>
         </div>
     </header>
 
     <nav>
         <div class="nav-container">
-            <button onclick="filterSelection('all')" class="btn active">All Work</button>
-            <button onclick="filterSelection('electronics')" class="btn">Electronics</button>
-            <button onclick="filterSelection('printing')" class="btn">Printing</button>
-            <button onclick="filterSelection('software')" class="btn">Software</button>
+            <button class="filter-btn active">All Projects</button>
+            <button class="filter-btn">Electronics</button>
+            <button class="filter-btn">Printing</button>
+            <button class="filter-btn">Automation</button>
         </div>
     </nav>
 
-    <section class="container">
+    <main class="container">
         <div class="project-grid">
             
-            <div class="project-card electronics">
-                <div class="card-inner">
-                    <div class="badge">Electronics</div>
-                    <i class="fas fa-bolt-lightning card-icon"></i>
-                    <h3>Smart Voting Machine</h3>
-                    <p>Arduino-powered secure voting system with real-time LCD display.</p>
-                    <div class="card-footer">
-                        <a href="#" class="main-btn">View Code</a>
-                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
-                    </div>
+            <div class="project-card">
+                <span class="badge">ELECTRONICS</span>
+                <i class="fas fa-microchip card-icon"></i>
+                <h3>Smart Voting Machine</h3>
+                <p>Arduino based secure voting system with digital counting and LCD interface.</p>
+                <div class="card-footer">
+                    <a href="#" class="main-btn">View Details</a>
+                    <i class="fas fa-download" style="cursor:pointer"></i>
                 </div>
             </div>
 
-            <div class="project-card printing">
-                <div class="card-inner">
-                    <div class="badge">Printing</div>
-                    <i class="fas fa-print card-icon"></i>
-                    <h3>Automatic A4 Machine</h3>
-                    <p>Innovative mechanism for automated paper handling and layout.</p>
-                    <div class="card-footer">
-                        <a href="#" class="main-btn">Details</a>
-                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
-                    </div>
+            <div class="project-card">
+                <span class="badge">PRINTING</span>
+                <i class="fas fa-print card-icon"></i>
+                <h3>ATM Style Printer</h3>
+                <p>A custom printing machine designed for student projects and document handling.</p>
+                <div class="card-footer">
+                    <a href="#" class="main-btn">Get Code</a>
+                    <i class="fas fa-file-pdf" style="cursor:pointer"></i>
                 </div>
             </div>
 
-            <div class="project-card electronics">
-                <div class="card-inner">
-                    <div class="badge">Automation</div>
-                    <i class="fas fa-robot card-icon"></i>
-                    <h3>ATM Style Printer</h3>
-                    <p>Token-based printing system for college campuses.</p>
-                    <div class="card-footer">
-                        <a href="#" class="main-btn">Full Report</a>
-                        <a href="#" class="icon-btn"><i class="fas fa-download"></i></a>
-                    </div>
+            <div class="project-card">
+                <span class="badge">AUTOMATION</span>
+                <i class="fas fa-robot card-icon"></i>
+                <h3>Automatic A4 Machine</h3>
+                <p>Mechanical automation for high-speed A4 paper processing and sorting.</p>
+                <div class="card-footer">
+                    <a href="#" class="main-btn">Read Report</a>
+                    <i class="fas fa-link" style="cursor:pointer"></i>
                 </div>
             </div>
 
         </div>
-    </section>
+    </main>
 
     <footer>
-        <p>Created by <strong>Shrishant Tarapure</strong> | Team4Print 2026</p>
+        <p>&copy; 2026 Team4Print | Created by Shrishant Tarapure</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
