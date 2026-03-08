@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Innovation Lab | Pro</title>
+    <title>Student Innovation Lab | Official</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,7 @@
         * { box-sizing: border-box; transition: 0.3s ease; }
         body { background: var(--dark); color: white; font-family: 'Space Grotesk', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* --- Navigation Bar --- */
+        /* Navigation Bar */
         nav {
             background: rgba(5, 10, 24, 0.95);
             padding: 15px 5%;
@@ -32,17 +32,11 @@
             backdrop-filter: blur(10px);
         }
 
-        .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; letter-spacing: -1px; }
+        .logo { font-size: 1.8rem; font-weight: 700; cursor: pointer; }
         .logo span { color: var(--primary); }
 
         .nav-right { display: flex; gap: 20px; align-items: center; }
         
-        .search-container { position: relative; display: flex; align-items: center; }
-        .search-bar { 
-            padding: 8px 15px; border-radius: 20px; border: 1px solid var(--glass); 
-            background: var(--glass); color: white; outline: none; width: 200px;
-        }
-
         .login-trigger {
             background: var(--primary); color: var(--dark);
             padding: 8px 22px; border-radius: 6px; font-weight: bold;
@@ -51,39 +45,38 @@
 
         .menu-dots { font-size: 1.4rem; cursor: pointer; color: var(--primary); padding: 5px; }
 
-        /* --- Sidebar --- */
+        /* Sidebar */
         .sidebar {
             position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
             background: #0a1428; z-index: 2000; padding: 40px 20px;
             box-shadow: -10px 0 30px rgba(0,0,0,0.8); border-left: 1px solid var(--glass);
         }
         .sidebar.active { right: 0; }
-        .sidebar h3 { border-bottom: 1px solid var(--glass); padding-bottom: 10px; margin-bottom: 20px; }
         .sidebar-link { 
             display: flex; align-items: center; gap: 15px; padding: 12px; 
             color: #94a3b8; text-decoration: none; border-radius: 8px; margin-bottom: 5px;
         }
         .sidebar-link:hover { background: var(--glass); color: var(--primary); }
 
-        /* --- Modal (Login & Register) --- */
+        /* Modal (Login & Register) */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 3000; align-items: center; justify-content: center;
         }
         .modal-content {
             background: var(--card-bg); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px;
-            border: 1px solid var(--primary); box-shadow: 0 0 30px rgba(0,251,255,0.2);
+            border: 1px solid var(--primary); text-align: center;
         }
         .modal-content input {
             width: 100%; padding: 12px; margin: 10px 0;
             background: rgba(255,255,255,0.03); border: 1px solid #333; color: white; border-radius: 8px;
         }
-        .modal-btn { 
+        .action-btn { 
             width: 100%; padding: 12px; margin-top: 20px; border: none; 
             border-radius: 8px; font-weight: bold; cursor: pointer; 
         }
 
-        /* --- Hero & Sections --- */
+        /* Sections */
         .hero { padding: 80px 20px; text-align: center; background: radial-gradient(circle at top, #112240, var(--dark)); }
         
         .branch-grid {
@@ -94,29 +87,23 @@
             background: var(--glass); padding: 25px 10px; border-radius: 12px; cursor: pointer;
             border: 1px solid rgba(255,255,255,0.05); text-align: center;
         }
-        .branch-box:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(0,251,255,0.05); }
+        .branch-box:hover { border-color: var(--primary); transform: translateY(-5px); }
         .branch-box i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
 
         #projectArea { max-width: 1200px; margin: 60px auto; padding: 20px; display: none; }
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .project-card { 
             background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; 
-            border: 1px solid rgba(255,255,255,0.05); position: relative;
+            border: 1px solid rgba(255,255,255,0.05); text-align: left;
         }
-        .project-card h3 { margin-top: 0; color: var(--primary); }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid var(--glass); color: #475569; font-size: 13px; }
-
+        footer { padding: 40px; text-align: center; border-top: 1px solid var(--glass); color: #475569; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo" onclick="location.reload()">Student<span>Lab</span></div>
+        <div class="logo">Student<span>Lab</span></div>
         <div class="nav-right">
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Search projects...">
-            </div>
             <button class="login-trigger" onclick="toggleModal()">Login</button>
             <div class="menu-dots" onclick="toggleSidebar()"><i class="fas fa-ellipsis-v"></i></div>
         </div>
@@ -124,12 +111,9 @@
 
     <div class="sidebar" id="sidebar">
         <i class="fas fa-times" style="cursor:pointer; font-size: 1.5rem;" onclick="toggleSidebar()"></i>
-        <h3 style="margin-top:30px;">Quick Menu</h3>
+        <h3 style="margin-top:30px;">Menu</h3>
         <a href="#" class="sidebar-link"><i class="fas fa-user"></i> My Profile</a>
         <a href="#" class="sidebar-link"><i class="fas fa-rocket"></i> Submit Project</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-bookmark"></i> Saved Items</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a>
-        <hr style="border: 0; border-top: 1px solid var(--glass); margin: 20px 0;">
         <a href="#" class="sidebar-link" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
@@ -139,19 +123,19 @@
             <h2 id="modalTitle">User Login</h2>
             
             <div id="loginForm">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <button class="modal-btn" style="background:var(--primary); color:var(--dark);">Sign In</button>
+                <input type="text" id="logUser" placeholder="Username">
+                <input type="password" id="logPass" placeholder="Password">
+                <button class="action-btn" style="background:var(--primary); color:var(--dark);" onclick="handleLogin()">Sign In</button>
                 <p style="font-size:13px; margin-top:20px; color:#94a3b8;">
                     New here? <span style="color:var(--primary); cursor:pointer" onclick="showRegister()">Register Account</span>
                 </p>
             </div>
 
             <div id="registerForm" style="display:none;">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button class="modal-btn" style="background:var(--secondary); color:white;">Create Account</button>
+                <input type="text" id="regName" placeholder="Full Name">
+                <input type="email" id="regEmail" placeholder="Email Address">
+                <input type="password" id="regPass" placeholder="Create Password">
+                <button class="action-btn" style="background:var(--secondary); color:white;" onclick="handleRegister()">Create Account</button>
                 <p style="font-size:13px; margin-top:20px; color:#94a3b8;">
                     Have an account? <span style="color:var(--primary); cursor:pointer" onclick="showLogin()">Back to Login</span>
                 </p>
@@ -160,12 +144,12 @@
     </div>
 
     <section class="hero">
-        <h1>Innovation Starts Here</h1>
-        <p style="color:#94a3b8; max-width: 600px; margin: 10px auto;">Access high-quality engineering projects across all branches. Download source codes and reports for free.</p>
+        <h1>Engineering Project Gallery</h1>
+        <p style="color:#94a3b8;">Explore and Download multi-disciplinary projects.</p>
     </section>
 
     <div class="branch-grid">
-        <div class="branch-box" onclick="loadBranch('Electronics', 'entc')"><i class="fas fa-microchip"></i><br>ENTC</div>
+        <div class="branch-box" onclick="loadBranch('Electronics', 'entc')"><i class="fas fa-microchip"></i><br>Electronics</div>
         <div class="branch-box" onclick="loadBranch('Computer', 'comp')"><i class="fas fa-laptop-code"></i><br>Computer</div>
         <div class="branch-box" onclick="loadBranch('Mechanical', 'mech')"><i class="fas fa-tools"></i><br>Mechanical</div>
         <div class="branch-box" onclick="loadBranch('Civil', 'civil')"><i class="fas fa-hard-hat"></i><br>Civil</div>
@@ -179,58 +163,56 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Student Lab | Professional Engineering Repository</p>
+        <p>&copy; 2026 Student Lab | Professional Engineering Hub</p>
     </footer>
 
     <script>
-        // Sidebar Toggle
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
 
-        // Modal Toggle
         function toggleModal() {
             let m = document.getElementById('authModal');
             m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-            showLogin(); // Reset to login view
         }
 
-        // Form Switching
         function showRegister() {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('registerForm').style.display = 'block';
-            document.getElementById('modalTitle').innerText = "Register";
+            document.getElementById('modalTitle').innerText = "Register Account";
         }
+
         function showLogin() {
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('modalTitle').innerText = "User Login";
         }
 
-        // Branch Loading Logic
-        const data = {
-            entc: [{t: "Smart Voting System", d: "Digital voting using Arduino & I2C Display."}],
-            comp: [{t: "Cloud File Manager", d: "Web app to store files using Node.js."}],
-            mech: [{t: "Solar Powered Car", d: "Efficiency model for renewable energy vehicles."}],
-            civil: [{t: "Smart Bridge System", d: "Automated structural monitoring for bridges."}],
-            elec: [{t: "Wireless Charging", d: "Project on inductive power transfer methods."}],
-            ai: [{t: "Object Detection", d: "Real-time AI model using Python & OpenCV."}]
-        };
+        // --- BUTTON CLICK LOGIC ---
+        function handleRegister() {
+            let name = document.getElementById('regName').value;
+            if(name === "") {
+                alert("Please fill all details!");
+            } else {
+                alert("Congratulations " + name + "! Your account is created successfully.");
+                toggleModal(); // Close modal
+            }
+        }
+
+        function handleLogin() {
+            let user = document.getElementById('logUser').value;
+            if(user === "") {
+                alert("Please enter username!");
+            } else {
+                alert("Welcome back, " + user + "!");
+                toggleModal();
+            }
+        }
 
         function loadBranch(name, key) {
-            const area = document.getElementById('projectArea');
-            area.style.display = 'block';
+            document.getElementById('projectArea').style.display = 'block';
             document.getElementById('branchTitle').innerText = name + " Projects";
-            
             const container = document.getElementById('projectContainer');
-            container.innerHTML = "";
-            data[key].forEach(p => {
-                container.innerHTML += `
-                    <div class="project-card">
-                        <h3>${p.t}</h3>
-                        <p style="color:#94a3b8; font-size:14px;">${p.d}</p>
-                        <button style="background:var(--primary); border:none; padding:8px 15px; border-radius:5px; font-weight:bold; margin-top:15px; cursor:pointer;">Download PDF</button>
-                    </div>`;
-            });
-            window.scrollTo({top: 600, behavior: 'smooth'});
+            container.innerHTML = `<div class="project-card"><h3>${name} Project 1</h3><p>Innovative project report for ${name} students.</p></div>`;
+            window.scrollTo({top: 500, behavior: 'smooth'});
         }
     </script>
 </body>
